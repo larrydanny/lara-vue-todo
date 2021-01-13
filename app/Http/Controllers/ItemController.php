@@ -15,7 +15,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return Item::where('status', true)->orderBy('created_at', 'DESC')->get();
     }
 
     /**
