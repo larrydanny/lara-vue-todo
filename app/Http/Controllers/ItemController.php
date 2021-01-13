@@ -75,7 +75,17 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::find( $id );
+
+        if( $item ) {
+            $item->completed = $request->completed ? true : false;
+            $item->completed_at = $request->completed ? Carbon::now() : null;
+            $item->save();
+
+            return $item;
+        }
+
+        return json_encode(["message" => "Item not found!"]);
     }
 
     /**
