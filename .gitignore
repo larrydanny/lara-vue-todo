@@ -25,3 +25,4 @@ composer.lock
 docker-compose.yml
 phpunit.xml
 tests/
+package-lock.json

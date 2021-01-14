@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Resources\ItemResource;
 use App\Models\Item;
 
 class ItemController extends Controller
@@ -15,7 +16,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Item::where('status', true)->orderBy('created_at', 'DESC')->get();
+        return ItemResource::collection(Item::where('status', true)->orderBy('created_at', 'DESC')->get());
     }
 
     /**
@@ -41,7 +42,7 @@ class ItemController extends Controller
         $item->name = $request->name;
         $item->save();
 
-        return $item;
+        return json_encode(["data" => [$item]]);
     }
 
     /**
@@ -82,10 +83,10 @@ class ItemController extends Controller
             $item->completed_at = $request->completed ? Carbon::now() : null;
             $item->save();
 
-            return $item;
+            return json_encode(["data" => [$item]]);
         }
 
-        return json_encode(["message" => "Item not found!"]);
+        return json_encode(["data" => [], "message" => "Item not found!"]);
     }
 
     /**
@@ -102,9 +103,9 @@ class ItemController extends Controller
             $item->status = false;
             $item->save();
 
-            return json_encode(["message" => "Item deleted successfully."]);
+            return json_encode(["data" => [], "message" => "Item deleted successfully."]);
         }
 
-        return json_encode(["message" => "Item not found!"]);
+        return json_encode(["data" => [], "message" => "Item not found!"]);
     }
 }
