@@ -1,0 +1,63 @@
+.listContainer {
+    width: 350px;
+    margin: auto;
+}
+
+.heading {
+    padding: 10px;
+    background-color: #e6e6e6;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.addItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    background: #f7f7f7;
+    border: 0px;
+    padding: 5px;
+    outline: none;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.plus {
+    font-size: 20px;
+}
+
+.active {
+    color: #00ce25;
+}
+
+.inactive {
+    color: #999999;
+}
+
+.item {
+    background: #e6e6e6;
+    padding: 20px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #999999;
+}
+
+.itemText {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.trashcan {
+    background: #e6e6e6;
+    border: none;
+    color: #ff0000;
+    outline: none;
+    float: right;
+}
